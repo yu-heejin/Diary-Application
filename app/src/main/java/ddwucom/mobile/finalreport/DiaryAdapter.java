@@ -67,6 +67,8 @@ public class DiaryAdapter extends BaseAdapter {
         viewHolder.feeling.setText(diaryArrayList.get(position).getFeeling());
         viewHolder.feelingIcon.setImageResource(diaryArrayList.get(position).getPicture());
         viewHolder.date.setText(diaryArrayList.get(position).getDate());
+
+        return view;
     }
 
 

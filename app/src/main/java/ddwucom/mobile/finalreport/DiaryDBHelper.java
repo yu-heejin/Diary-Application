@@ -26,7 +26,7 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "CREATE TABLE " + TABLE_NAME + " (" + COL_ID + " integer primary key autoincrement, "
                 + COL_TITLE + " TEXT, " + COL_FEELING + " TEXT, " + COL_WEATHER + " TEXT, " + COL_DATE + " TEXT, "
-                + COL_DETAIL + " TEXT, " + COL_PIC + " TEXT)";
+                + COL_DETAIL + " TEXT, " + COL_PIC + " integer)";
 
         sqLiteDatabase.execSQL(sql);
     }

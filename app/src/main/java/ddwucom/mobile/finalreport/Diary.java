@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Diary implements Serializable {
@@ -17,6 +18,9 @@ public class Diary implements Serializable {
     private String detail;
     private int picture;
 
+    LocalDate localDate;
+    DateTimeFormatter formatter;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Diary(String title, String feeling, String weather, String detail, int picture) {
         this.title = title;
@@ -24,7 +28,10 @@ public class Diary implements Serializable {
         this.weather = weather;
         this.detail = detail;
         this.picture = picture;
-        this.date = 
+
+        localDate = LocalDate.now();
+        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = localDate.format(formatter);
     }
 
     public long get_id() {
@@ -59,11 +66,11 @@ public class Diary implements Serializable {
         this.weather = weather;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
