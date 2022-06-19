@@ -5,8 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class DiaryAdapter extends BaseAdapter {
@@ -16,7 +21,6 @@ public class DiaryAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     ViewHolder viewHolder;
 
-    @Override
     public DiaryAdapter(Context context, int layout, ArrayList<Diary> diaryArrayList) {
         this.context = context;
         this.layout = layout;
@@ -47,12 +51,30 @@ public class DiaryAdapter extends BaseAdapter {
             view = layoutInflater.inflate(layout, viewGroup, false);
 
             viewHolder = new ViewHolder();
-            viewHolder.
+            viewHolder.diaryTitle = (TextView) view.findViewById(R.id.diary_title);
+            viewHolder.date = (TextView) view.findViewById(R.id.date);
+            viewHolder.weather = (TextView) view.findViewById(R.id.weather);
+            viewHolder.feeling = (TextView) view.findViewById(R.id.feeling);
+            viewHolder.feelingIcon = (ImageView) view.findViewById(R.id.feeling_icon);
+
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
+
+        viewHolder.diaryTitle.setText(diaryArrayList.get(position).getTitle());
+        viewHolder.weather.setText(diaryArrayList.get(position).getWeather());
+        viewHolder.feeling.setText(diaryArrayList.get(position).getFeeling());
+        viewHolder.feelingIcon.setImageResource(diaryArrayList.get(position).getPicture());
+        viewHolder.date.setText(diaryArrayList.get(position).getDate());
     }
 
 
     static class ViewHolder {
-
+        TextView diaryTitle;
+        TextView date;
+        TextView weather;
+        TextView feeling;
+        ImageView feelingIcon;
     }
 }

@@ -1,6 +1,11 @@
 package ddwucom.mobile.finalreport;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Diary implements Serializable {
@@ -8,15 +13,18 @@ public class Diary implements Serializable {
     private String title;
     private String feeling;
     private String weather;
-    private Date date;
+    private String date;
     private String detail;
+    private int picture;
 
-    public Diary(String title, String feeling, String weather, Date date, String detail) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Diary(String title, String feeling, String weather, String detail, int picture) {
         this.title = title;
         this.feeling = feeling;
         this.weather = weather;
-        this.date = date;
         this.detail = detail;
+        this.picture = picture;
+        this.date = 
     }
 
     public long get_id() {
@@ -51,11 +59,11 @@ public class Diary implements Serializable {
         this.weather = weather;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -65,5 +73,13 @@ public class Diary implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
+
+    public void setPicture(int picture) {
+        this.picture = picture;
     }
 }

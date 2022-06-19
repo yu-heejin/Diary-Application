@@ -16,6 +16,7 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
     public final static String COL_WEATHER = "weather";
     public final static String COL_DATE = "date";
     public final static String COL_DETAIL = "detail";
+    public final static String COL_PIC = "picture";
 
     public DiaryDBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, 1);
@@ -24,8 +25,8 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "CREATE TABLE " + TABLE_NAME + " (" + COL_ID + " integer primary key autoincrement, "
-                + COL_TITLE + " TEXT, " + COL_FEELING + " TEXT, " + COL_WEATHER + " TEXT, " + COL_DATE + " DATE, "
-                + COL_DETAIL + " TEXT)";
+                + COL_TITLE + " TEXT, " + COL_FEELING + " TEXT, " + COL_WEATHER + " TEXT, " + COL_DATE + " TEXT, "
+                + COL_DETAIL + " TEXT, " + COL_PIC + " TEXT)";
 
         sqLiteDatabase.execSQL(sql);
     }

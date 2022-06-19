@@ -8,5 +8,64 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/feeling_icon"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/smile" />
+
+        <TextView
+            android:id="@+id/diary_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="121dp"
+            android:text="다이어리 제목 적는 곳"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="9dp"
+            android:text="날짜 적는 곳"
+            android:textColor="#505050"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/feeling_icon"
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="188dp"
+            android:text="날씨 적는 곳"
+            android:textColor="#505050"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+
+        <TextView
+            android:id="@+id/feeling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="120dp"
+            android:text="기분 적는 곳"
+            android:textColor="#505050"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
