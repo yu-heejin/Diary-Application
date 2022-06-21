@@ -8,26 +8,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/diary_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="180dp"
             android:text="다이어리 제목 적는 곳"
             android:textColor="#000000"
-            android:textSize="22sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/feeling_icon"
-            android:layout_width="65dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="35dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="19dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/smile" />
@@ -36,21 +36,22 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="7dp"
             android:text="날짜 적는 곳"
-            android:textColor="#505050"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/weather"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
         <TextView
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="26dp"
             android:text="idNum"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,10 +60,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="7dp"
             android:text="날씨 적는 곳"
-            android:textColor="#505050"
-            android:textSize="12sp"
+            android:textColor="#000000"
+            android:textSize="10sp"
             app:layout_constraintEnd_toStartOf="@+id/feeling"
             app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
@@ -71,12 +72,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="67dp"
+            android:layout_marginEnd="151dp"
             android:text="기분 적는 곳"
-            android:textColor="#505050"
-            android:textSize="12sp"
+            android:textColor="#000000"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/diary_title" />
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:text="일기 내용 적는 곳"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

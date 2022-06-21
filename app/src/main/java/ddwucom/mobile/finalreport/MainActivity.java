@@ -3,9 +3,13 @@ package ddwucom.mobile.finalreport;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -38,8 +42,29 @@ public class MainActivity extends AppCompatActivity {
         //diaryArrayList.add(new Diary("다이어리 제목 테스트", "좋음", "흐림", "재밌다", R.mipmap.angry));
 
         listView.setAdapter(diaryAdapter);
+    }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add:
+                Toast.makeText(this, "일기 쓰기", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, AddDiary.class);
+                startActivity(intent);
+                break;
 
+            case R.id.intro:
+                Toast.makeText(this, "유희진", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.exit:
+                Toast.makeText(this, "나가기", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
     }
 }
