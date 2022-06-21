@@ -51,6 +51,7 @@ public class DiaryAdapter extends BaseAdapter {
             view = layoutInflater.inflate(layout, viewGroup, false);
 
             viewHolder = new ViewHolder();
+            viewHolder.id = (TextView) view.findViewById(R.id.id);
             viewHolder.diaryTitle = (TextView) view.findViewById(R.id.diary_title);
             viewHolder.date = (TextView) view.findViewById(R.id.date);
             viewHolder.weather = (TextView) view.findViewById(R.id.weather);
@@ -62,6 +63,7 @@ public class DiaryAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
+        viewHolder.id.setText(String.valueOf(diaryArrayList.get(position).get_id()));
         viewHolder.diaryTitle.setText(diaryArrayList.get(position).getTitle());
         viewHolder.weather.setText(diaryArrayList.get(position).getWeather());
         viewHolder.feeling.setText(diaryArrayList.get(position).getFeeling());
@@ -73,6 +75,7 @@ public class DiaryAdapter extends BaseAdapter {
 
 
     static class ViewHolder {
+        TextView id;
         TextView diaryTitle;
         TextView date;
         TextView weather;

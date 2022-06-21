@@ -22,7 +22,8 @@ public class Diary implements Serializable {
     DateTimeFormatter formatter;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Diary(String title, String feeling, String weather, String detail, int picture) {
+    public Diary(long _id, String title, String feeling, String weather, String detail, int picture) {
+        this._id = _id;
         this.title = title;
         this.feeling = feeling;
         this.weather = weather;
