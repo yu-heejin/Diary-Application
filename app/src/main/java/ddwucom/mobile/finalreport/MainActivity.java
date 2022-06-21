@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private DiaryAdapter diaryAdapter;
     private ListView listView;
 
+    final int REQ_CODE = 100;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.add:
                 Toast.makeText(this, "일기 쓰기", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, AddDiary.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQ_CODE);
                 break;
 
             case R.id.intro:
