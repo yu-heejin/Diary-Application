@@ -8,17 +8,23 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DiaryDBManager {
     DiaryDBHelper diaryDBHelper = null;
     Cursor cursor = null;
 
+    LocalDate localDate;
+    DateTimeFormatter formatter;
+
     public DiaryDBManager(Context context) {
         diaryDBHelper = new DiaryDBHelper(context);
     }
 
     //Create
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public boolean addNewDiary(Diary newDiary) {
         SQLiteDatabase db = diaryDBHelper.getWritableDatabase();
         ContentValues val = new ContentValues();
@@ -28,7 +34,11 @@ public class DiaryDBManager {
         val.put(diaryDBHelper.COL_WEATHER, newDiary.getWeather());
         val.put(diaryDBHelper.COL_DETAIL, newDiary.getDetail());
         val.put(diaryDBHelper.COL_PIC, newDiary.getPicture());
-        val.put(diaryDBHelper.COL_DATE, newDiary.getDate());
+
+        localDate = LocalDate.now();
+        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String date = localDate.format(formatter);
+        val.put(diaryDBHelper.COL_DATE, date);
 
         long count = db.insert(diaryDBHelper.TABLE_NAME, null, val);
 
@@ -53,7 +63,7 @@ public class DiaryDBManager {
             String detail = cursor.getString(5);
             int picture = cursor.getInt(6);
 
-            diaryArrayList.add(new Diary(id, title, feeling, weather, detail, picture));
+            diaryArrayList.add(new Diary(id, title, feeling, weather, date, detail, picture));
         }
 
         cursor.close();

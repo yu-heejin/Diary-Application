@@ -10,8 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.sql.Array;
 import java.util.ArrayList;
 
 //과제명 : 다이어리 앱
@@ -68,5 +66,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        diaryArrayList.clear();
+        diaryArrayList.addAll(diaryDBManager.getAllDiary());
+        diaryAdapter.notifyDataSetChanged();
     }
 }

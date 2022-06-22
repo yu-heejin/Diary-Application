@@ -1,13 +1,6 @@
 package ddwucom.mobile.finalreport;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Diary implements Serializable {
     private long _id;
@@ -18,21 +11,22 @@ public class Diary implements Serializable {
     private String detail;
     private int picture;
 
-    LocalDate localDate;
-    DateTimeFormatter formatter;
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public Diary(long _id, String title, String feeling, String weather, String detail, int picture) {
+    public Diary(long _id, String title, String feeling, String weather, String date, String detail, int picture) {
         this._id = _id;
+        this.title = title;
+        this.feeling = feeling;
+        this.weather = weather;
+        this.date = date;
+        this.detail = detail;
+        this.picture = picture;
+    }
+
+    public Diary(String title, String feeling, String weather, String detail, int picture) {
         this.title = title;
         this.feeling = feeling;
         this.weather = weather;
         this.detail = detail;
         this.picture = picture;
-
-        localDate = LocalDate.now();
-        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.date = localDate.format(formatter);
     }
 
     public long get_id() {
