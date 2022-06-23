@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -19,12 +21,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Diary> diaryArrayList;
-    private DiaryDBHelper diaryDBHelper;
     private DiaryDBManager diaryDBManager;
     private DiaryAdapter diaryAdapter;
     private ListView listView;
 
     final int REQ_CODE = 100;
+    final int UPDATE_CODE = 200;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -42,6 +44,43 @@ public class MainActivity extends AppCompatActivity {
         //diaryArrayList.add(new Diary("다이어리 제목 테스트", "좋음", "흐림", "재밌다", R.mipmap.angry));
 
         listView.setAdapter(diaryAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Diary diary = diaryArrayList.get(i);
+
+                Intent intent = new Intent(MainActivity.this, UpdateDiary.class);
+                intent.putExtra("diary", diary);
+                startActivityForResult(intent, UPDATE_CODE);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQ_CODE) {
+            switch(resultCode) {
+                case RESULT_OK:
+                    Toast.makeText(this, "오늘 하루를 기록했습니다!", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case RESULT_CANCELED:
+                    Toast.makeText(this, "취소가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+
+        } else if(requestCode == UPDATE_CODE) {
+            switch (resultCode) {
+                case RESULT_OK:
+                    Toast.makeText(this, "수정이 완료되었습니다!", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case RESULT_CANCELED:
+                    Toast.makeText(this, "수정 취소가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,4 +115,5 @@ public class MainActivity extends AppCompatActivity {
         diaryArrayList.addAll(diaryDBManager.getAllDiary());
         diaryAdapter.notifyDataSetChanged();
     }
+
 }

@@ -58,11 +58,8 @@ public class AddDiary extends AppCompatActivity {
 
                 if(result) {
                     Intent resultIntent = new Intent();
-                    Toast.makeText(this, "오늘 하루를 기록했습니다!", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
-                } else {
-                    Toast.makeText(this, "오늘 하루 기록을 실패했습니다.", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
