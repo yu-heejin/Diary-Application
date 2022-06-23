@@ -14,12 +14,12 @@
             android:id="@+id/diary_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="180dp"
             android:text="다이어리 제목 적는 곳"
             android:textColor="#000000"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/feeling_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -36,12 +36,12 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="7dp"
             android:text="날짜 적는 곳"
             android:textColor="#000000"
             android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/weather"
             app:layout_constraintTop_toBottomOf="@+id/diary_title" />
 
         <TextView
@@ -83,8 +83,8 @@
             android:id="@+id/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="16dp"
             android:text="일기 내용 적는 곳"
             android:textColor="#000000"
             android:textSize="13sp"

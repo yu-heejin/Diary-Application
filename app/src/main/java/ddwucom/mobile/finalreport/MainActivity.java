@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private DiaryDBManager diaryDBManager;
     private DiaryAdapter diaryAdapter;
     private ListView listView;
+    SearchView searchView;
+    MenuItem menuItem;
 
     final int REQ_CODE = 100;
     final int UPDATE_CODE = 200;
@@ -116,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        menuItem = menu.findItem(R.id.app_bar_search);
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("제목으로 검색하기");
         return true;
     }
 

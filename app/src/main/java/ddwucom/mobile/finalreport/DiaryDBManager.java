@@ -129,4 +129,13 @@ public class DiaryDBManager {
         if(result > 0) return true;
         else return false;
     }
+
+//    //title로 DB 검색하기
+//    public ArrayList<Diary> getDiaryByTitle(String title) {
+//        ArrayList<Diary> diaryArrayList = new ArrayList<>();
+//        SQLiteDatabase db = diaryDBHelper.getReadableDatabase();
+//
+//        String whereClause = diaryDBHelper.COL_TITLE + "=?";
+//        String[] whereArgs = new String[] { title };
+//    }
 }

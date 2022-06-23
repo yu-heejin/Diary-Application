@@ -37,6 +37,31 @@ public class UpdateDiary extends AppCompatActivity {
         upTitle.setText(diary.getTitle());
         upDetail.setText(diary.getDetail());
 
+        w1 = findViewById(R.id.upSunny);
+        w2 = findViewById(R.id.upCloudy);
+        w3 = findViewById(R.id.upRain);
+
+        f1 = findViewById(R.id.upFine);
+        f2 = findViewById(R.id.upSad);
+        f3 = findViewById(R.id.upAngry);
+
+        if(diary.getWeather().equals("맑음")) {
+            upWeather.check(w1.getId());
+        } else if(diary.getWeather().equals("흐림")) {
+            upWeather.check(w2.getId());
+        } else {
+            upWeather.check(w3.getId());
+        }
+
+        if(diary.getFeeling().equals("좋음")) {
+            upFeeling.check(f1.getId());
+        } else if(diary.getWeather().equals("슬픔")) {
+            upFeeling.check(f2.getId());
+        } else {
+            upFeeling.check(f3.getId());
+        }
+
+
 
 
         diaryDBManager = new DiaryDBManager(this);
