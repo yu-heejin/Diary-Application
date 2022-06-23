@@ -133,7 +133,21 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.exit:
-                Toast.makeText(this, "나가기", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "나가기", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("앱 종료하기")
+                        .setMessage("정말 나가셔도 괜찮으신가요?")
+                        .setPositiveButton("괜찮아요", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(MainActivity.this, "다음에 또 봐요!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        })
+                        .setCancelable(false)
+                        .setNegativeButton("취소", null)
+                        .show();
+                        
         }
 
         return true;
