@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         .setCancelable(false)
                         .setNegativeButton("취소", null)
                         .show();
-                        
+
         }
 
         return true;

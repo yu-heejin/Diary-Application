@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,9 +16,12 @@ import org.w3c.dom.Text;
 
 public class AddDiary extends AppCompatActivity {
     TextView title;
-    TextView weather;
-    TextView feeling;
+    RadioGroup weather;
+    RadioButton w1, w2, w3;
+    RadioGroup feeling;
+    RadioButton f1, f2, f3;
     TextView detail;
+    String w, f;
 
     DiaryDBManager diaryDBManager;
 
@@ -30,7 +35,16 @@ public class AddDiary extends AppCompatActivity {
         feeling = findViewById(R.id.edit_feeling);
         detail = findViewById(R.id.edit_detail);
 
-        //diaryDBHelper = new DiaryDBHelper(this);    -> DBManager를 호출하면 helper를 부를 필요 없음
+        w1 = findViewById(R.id.sunny);
+        w2 = findViewById(R.id.cloudy);
+        w3 = findViewById(R.id.rain);
+
+        f1 = findViewById(R.id.fine);
+        f2 = findViewById(R.id.sad);
+        f3 = findViewById(R.id.angry);
+
+
+
         diaryDBManager = new DiaryDBManager(this);
     }
 
@@ -39,8 +53,7 @@ public class AddDiary extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_ok:
                 String t = title.getText().toString();
-                String w = weather.getText().toString();
-                String f = feeling.getText().toString();
+
                 String d = detail.getText().toString();
 
                 boolean result = diaryDBManager.addNewDiary(
@@ -48,7 +61,6 @@ public class AddDiary extends AppCompatActivity {
                 );
 
                 if(result) {
-                    Intent resultIntent = new Intent();
                     setResult(RESULT_OK);
                 }
                 break;

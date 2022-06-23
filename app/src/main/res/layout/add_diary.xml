@@ -5,18 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edit_feeling"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="28dp"
-        android:ems="10"
-        android:hint="좋음 / 슬픔 / 화남"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -27,18 +15,6 @@
         android:textColor="#171717"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_weather"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="28dp"
-        android:ems="10"
-        android:hint="맑음 / 흐림 / 비"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -82,7 +58,7 @@
         android:layout_width="380dp"
         android:layout_height="292dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="6dp"
         android:ems="10"
         android:hint="오늘 하루를 기록해보세요."
         android:inputType="textMultiLine"
@@ -113,4 +89,67 @@
         android:text="취소"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_detail" />
+
+    <RadioGroup
+        android:id="@+id/edit_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_title">
+
+        <RadioButton
+            android:id="@+id/sunny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="맑음" />
+
+        <RadioButton
+            android:id="@+id/cloudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="흐림" />
+
+        <RadioButton
+            android:id="@+id/rain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="비" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/edit_feeling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="155dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_weather">
+
+        <RadioButton
+            android:id="@+id/fine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="좋음" />
+
+        <RadioButton
+            android:id="@+id/sad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="슬픔" />
+
+        <RadioButton
+            android:id="@+id/angry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="화남" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
