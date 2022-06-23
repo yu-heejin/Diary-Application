@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".AddDiary"></activity>
         <activity android:name=".UpdateDiary"></activity>
+        <activity android:name=".IntroActivity"></activity>
     </application>
 
 </manifest>

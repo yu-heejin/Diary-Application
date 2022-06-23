@@ -1,8 +1,10 @@
 package ddwucom.mobile.finalreport;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -55,6 +57,35 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, UPDATE_CODE);
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final int position = i;
+                String title = diaryArrayList.get(i).getTitle();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("다이어리 삭제")
+                        .setMessage("\"" + title + "\" 기록을 정말 삭제하시겠습니까?")
+                        .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                boolean result = diaryDBManager.removeDiary(diaryArrayList.get(position).get_id());
+
+                                if(result) {
+                                    Toast.makeText(MainActivity.this, "삭제가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                    onResume();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "삭제에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .setNegativeButton("취소", null)
+                        .setCancelable(false)
+                        .show();
+                return true;
+            }
+        });
     }
 
     @Override
@@ -91,13 +122,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add:
-                Toast.makeText(this, "일기 쓰기", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "일기 쓰기", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, AddDiary.class);
                 startActivityForResult(intent, REQ_CODE);
                 break;
 
             case R.id.intro:
-                Toast.makeText(this, "유희진", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(this, IntroActivity.class);
+                startActivity(intent1);
                 break;
 
             case R.id.exit:
