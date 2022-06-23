@@ -19,6 +19,7 @@ public class DiaryDBManager {
     LocalDate localDate;
     DateTimeFormatter formatter;
 
+
     public DiaryDBManager(Context context) {
         diaryDBHelper = new DiaryDBHelper(context);
     }
@@ -33,12 +34,22 @@ public class DiaryDBManager {
         val.put(diaryDBHelper.COL_FEELING, newDiary.getFeeling());
         val.put(diaryDBHelper.COL_WEATHER, newDiary.getWeather());
         val.put(diaryDBHelper.COL_DETAIL, newDiary.getDetail());
-        val.put(diaryDBHelper.COL_PIC, newDiary.getPicture());
 
         localDate = LocalDate.now();
         formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = localDate.format(formatter);
         val.put(diaryDBHelper.COL_DATE, date);
+
+        int picture;
+
+        if(newDiary.getFeeling().equals("화남")) {
+            picture = R.mipmap.angry;
+        } else if(newDiary.getFeeling().equals("슬픔")) {
+            picture = R.mipmap.sad;
+        } else  {
+            picture = R.mipmap.smile;
+        }
+        val.put(diaryDBHelper.COL_PIC, picture);
 
         long count = db.insert(diaryDBHelper.TABLE_NAME, null, val);
 
@@ -79,8 +90,19 @@ public class DiaryDBManager {
         row.put(diaryDBHelper.COL_FEELING, diary.getFeeling());
         row.put(diaryDBHelper.COL_WEATHER, diary.getWeather());
         row.put(diaryDBHelper.COL_DETAIL, diary.getDetail());
-        row.put(diaryDBHelper.COL_PIC, diary.getPicture());
+        //row.put(diaryDBHelper.COL_PIC, diary.getPicture());
         row.put(diaryDBHelper.COL_DATE, diary.getDate());
+
+        int picture;
+
+        if(diary.getFeeling().equals("화남")) {
+            picture = R.mipmap.angry;
+        } else if(diary.getFeeling().equals("슬픔")) {
+            picture = R.mipmap.sad;
+        } else  {
+            picture = R.mipmap.smile;
+        }
+        row.put(diaryDBHelper.COL_PIC, picture);
 
         String whereClause = diaryDBHelper.COL_ID + "=?";
         String[] whereArgs = new String[] { String.valueOf(diary.get_id()) };

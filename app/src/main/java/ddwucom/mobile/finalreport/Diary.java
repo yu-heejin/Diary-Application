@@ -21,12 +21,11 @@ public class Diary implements Serializable {
         this.picture = picture;
     }
 
-    public Diary(String title, String feeling, String weather, String detail, int picture) {
+    public Diary(String title, String feeling, String weather, String detail) {
         this.title = title;
         this.feeling = feeling;
         this.weather = weather;
         this.detail = detail;
-        this.picture = picture;
     }
 
     public long get_id() {

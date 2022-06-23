@@ -42,34 +42,23 @@ public class AddDiary extends AppCompatActivity {
                 String w = weather.getText().toString();
                 String f = feeling.getText().toString();
                 String d = detail.getText().toString();
-                int pic;
-
-                if(f.equals("좋음")) {
-                    pic = R.mipmap.smile;
-                } else if(f.equals("슬픔")) {
-                    pic = R.mipmap.sad;
-                } else  {
-                    pic = R.mipmap.angry;
-                }
 
                 boolean result = diaryDBManager.addNewDiary(
-                        new Diary(t, f, w, d, pic)
+                        new Diary(t, f, w, d)
                 );
 
                 if(result) {
                     Intent resultIntent = new Intent();
                     setResult(RESULT_OK);
-                    finish();
                 }
-
                 break;
 
 
             case R.id.button_cancel:
                 setResult(RESULT_CANCELED);
-                finish();
                 break;
-
         }
+
+        finish();
     }
 }
