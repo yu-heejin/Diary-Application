@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 //과제명 : 다이어리 앱
@@ -123,6 +125,39 @@ public class MainActivity extends AppCompatActivity {
         menuItem = menu.findItem(R.id.app_bar_search);
         searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("제목으로 검색하기");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                //검색 버튼이 눌렸을 때 이벤트 처리
+                ArrayList<Diary> arrayList = diaryDBManager.getDiaryByTitle(s);
+                diaryArrayList.clear();
+                diaryArrayList.addAll(arrayList);
+                diaryAdapter.notifyDataSetChanged();
+                return false;
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if(s.equals("")) {
+                    diaryArrayList.clear();
+                    diaryArrayList.addAll(diaryDBManager.getAllDiary());
+                    diaryAdapter.notifyDataSetChanged();
+                } else {
+                    diaryArrayList.clear();
+                    ArrayList<Diary> tmp = diaryDBManager.getAllDiary();
+                    for(int i=0; i<tmp.size(); i++) {
+                        if(tmp.get(i).getTitle().contains(s)) {
+                            diaryArrayList.add(tmp.get(i));
+                        }
+                    }
+                    diaryAdapter.notifyDataSetChanged();
+                }
+
+                return false;
+            }
+        });
         return true;
     }
 

@@ -27,7 +27,7 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
     DateTimeFormatter formatter;
 
     public DiaryDBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, 2);
+        super(context, DB_NAME, null, 3);
     }
 
     @Override
@@ -39,10 +39,10 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql);
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '오늘의 일기', '좋음', '맑음', '2022-03-01', '오늘은 친구와 맛있는 저녁 식사를 했다. 재미있었다.', " + R.mipmap.smile + ");");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '속상한 하루...', '슬픔', '맑음', '2022-03-05', '노력한 만큼 안 나와서 속상해 ㅠㅠ', " + R.mipmap.sad + ");");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '놀고싶다', '화남', '비', '2022-03-06', '비가 와서 못 나가!', " + R.mipmap.angry + ");");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '강아지랑 산책', '좋음', '맑음', '2022-03-31', '강아지랑 같이 산책하는게 제일 좋아!', " + R.mipmap.smile + ");");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '즐거운 내 생일~!', '좋음', '흐림', '2022-04-07', '선물도 많이받고 맛있는것도 많이 받아서 좋다!', " + R.mipmap.smile + ");");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '슬픈 하루', '슬픔', '맑음', '2022-03-05', '넘어져서 다쳤다.', " + R.mipmap.sad + ");");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '친구랑 싸웠다', '화남', '비', '2022-03-06', '화가난다.', " + R.mipmap.angry + ");");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '강아지랑 산책', '좋음', '맑음', '2022-03-31', '재미있다!', " + R.mipmap.smile + ");");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME + " values (null, '벚꽃 구경', '좋음', '흐림', '2022-04-07', '벚꽃이 참 이쁘다', " + R.mipmap.smile + ");");
     }
 
     @Override

@@ -130,12 +130,29 @@ public class DiaryDBManager {
         else return false;
     }
 
-//    //title로 DB 검색하기
-//    public ArrayList<Diary> getDiaryByTitle(String title) {
-//        ArrayList<Diary> diaryArrayList = new ArrayList<>();
-//        SQLiteDatabase db = diaryDBHelper.getReadableDatabase();
-//
-//        String whereClause = diaryDBHelper.COL_TITLE + "=?";
-//        String[] whereArgs = new String[] { title };
-//    }
+    //title로 DB 검색하기
+    public ArrayList<Diary> getDiaryByTitle(String title) {
+        ArrayList<Diary> diaryArrayList = new ArrayList<>();
+        SQLiteDatabase db = diaryDBHelper.getReadableDatabase();
+
+        String whereClause = diaryDBHelper.COL_TITLE + "=?";
+        String[] whereArgs = new String[] { title };
+
+        Cursor cursor = db.query(diaryDBHelper.TABLE_NAME, null, whereClause, whereArgs, null, null, null, null);
+
+        while(cursor.moveToNext()) {
+            long id = cursor.getInt(0);
+            String title2 = cursor.getString(1);
+            String feeling = cursor.getString(2);
+            String weather = cursor.getString(3);
+            String date = cursor.getString(4);
+            String detail = cursor.getString(5);
+            int picture = cursor.getInt(6);
+
+            diaryArrayList.add(new Diary(id, title2, feeling, weather, date, detail, picture));
+        }
+        cursor.close();
+        diaryDBHelper.close();
+        return diaryArrayList;
+    }
 }
