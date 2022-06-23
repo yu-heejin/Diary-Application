@@ -5,12 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RadioGroup
+        android:id="@+id/update_feeling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="155dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_weather">
+
+        <RadioButton
+            android:id="@+id/upFine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="좋음" />
+
+        <RadioButton
+            android:id="@+id/upSad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="슬픔" />
+
+        <RadioButton
+            android:id="@+id/upAngry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="화남" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/update_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_title">
+
+        <RadioButton
+            android:id="@+id/upSunny"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="맑음" />
+
+        <RadioButton
+            android:id="@+id/upCloudy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="흐림" />
+
+        <RadioButton
+            android:id="@+id/upRain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="비" />
+    </RadioGroup>
+
     <EditText
         android:id="@+id/update_detail"
         android:layout_width="380dp"
         android:layout_height="292dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="기록했던 하루를 수정해보세요."
         android:inputType="textMultiLine"
@@ -42,18 +103,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_detail" />
 
-    <EditText
-        android:id="@+id/update_feeling"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="28dp"
-        android:ems="10"
-        android:hint="좋음 / 슬픔 / 화남"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -64,18 +113,6 @@
         android:textColor="#171717"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/update_weather"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="28dp"
-        android:ems="10"
-        android:hint="맑음 / 흐림 / 비"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

@@ -17,9 +17,7 @@ import org.w3c.dom.Text;
 public class AddDiary extends AppCompatActivity {
     TextView title;
     RadioGroup weather;
-    RadioButton w1, w2, w3;
     RadioGroup feeling;
-    RadioButton f1, f2, f3;
     TextView detail;
     String w, f;
 
@@ -35,15 +33,45 @@ public class AddDiary extends AppCompatActivity {
         feeling = findViewById(R.id.edit_feeling);
         detail = findViewById(R.id.edit_detail);
 
-        w1 = findViewById(R.id.sunny);
-        w2 = findViewById(R.id.cloudy);
-        w3 = findViewById(R.id.rain);
 
-        f1 = findViewById(R.id.fine);
-        f2 = findViewById(R.id.sad);
-        f3 = findViewById(R.id.angry);
+        weather.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.sunny:
+                        w = "맑음";
+                        break;
 
+                    case R.id.cloudy:
+                        w = "흐림";
+                        break;
 
+                    case R.id.rain:
+                        w = "비";
+                        break;
+                }
+            }
+
+        });
+
+        feeling.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.fine:
+                        f = "좋음";
+                        break;
+
+                    case R.id.sad:
+                        f = "슬픔";
+                        break;
+
+                    case R.id.angry:
+                        f = "화남";
+                        break;
+                }
+            }
+        });
 
         diaryDBManager = new DiaryDBManager(this);
     }
@@ -53,7 +81,6 @@ public class AddDiary extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_ok:
                 String t = title.getText().toString();
-
                 String d = detail.getText().toString();
 
                 boolean result = diaryDBManager.addNewDiary(
