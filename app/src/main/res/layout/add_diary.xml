@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/add_icon"
+        android:layout_width="89dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="192dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/smile" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -56,15 +66,27 @@
     <EditText
         android:id="@+id/edit_detail"
         android:layout_width="380dp"
-        android:layout_height="292dp"
+        android:layout_height="186dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="108dp"
         android:ems="10"
         android:hint="오늘 하루를 기록해보세요."
         android:inputType="textMultiLine"
         android:scrollHorizontally="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_feeling" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="186dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#8CC4FF"
+        android:onClick="onClick"
+        android:text="취소"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_detail" />
 
     <Button
         android:id="@+id/button_ok"
@@ -76,18 +98,6 @@
         android:onClick="onClick"
         android:text="추가"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_detail" />
-
-    <Button
-        android:id="@+id/button_cancel"
-        android:layout_width="186dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#8CC4FF"
-        android:onClick="onClick"
-        android:text="취소"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_detail" />
 
     <RadioGroup

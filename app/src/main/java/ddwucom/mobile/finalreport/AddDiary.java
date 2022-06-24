@@ -1,10 +1,10 @@
 package ddwucom.mobile.finalreport;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,14 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
 
 public class AddDiary extends AppCompatActivity {
-    TextView title;
+    EditText title;
     RadioGroup weather;
     RadioGroup feeling;
-    TextView detail;
+    EditText detail;
     String w, f;
+    ImageView icon;
 
     DiaryDBManager diaryDBManager;
 
@@ -28,10 +28,11 @@ public class AddDiary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_diary);
 
-        title = findViewById(R.id.edit_title);
-        weather = findViewById(R.id.edit_weather);
-        feeling = findViewById(R.id.edit_feeling);
-        detail = findViewById(R.id.edit_detail);
+        title = (EditText) findViewById(R.id.edit_title);
+        weather = (RadioGroup) findViewById(R.id.edit_weather);
+        feeling = (RadioGroup) findViewById(R.id.edit_feeling);
+        detail = (EditText) findViewById(R.id.edit_detail);
+        icon = (ImageView) findViewById(R.id.add_icon);
 
 
         weather.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -60,14 +61,17 @@ public class AddDiary extends AppCompatActivity {
                 switch (i) {
                     case R.id.fine:
                         f = "좋음";
+                        icon.setImageResource(R.mipmap.smile);
                         break;
 
                     case R.id.sad:
                         f = "슬픔";
+                        icon.setImageResource(R.mipmap.sad);
                         break;
 
                     case R.id.angry:
                         f = "화남";
+                        icon.setImageResource(R.mipmap.angry);
                         break;
                 }
             }

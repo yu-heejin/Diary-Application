@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ public class UpdateDiary extends AppCompatActivity {
     EditText upTitle, upDetail;
     Diary diary;
     DiaryDBManager diaryDBManager;
+    ImageView icon;
 
     RadioGroup upWeather;
     RadioGroup upFeeling;
@@ -28,10 +30,11 @@ public class UpdateDiary extends AppCompatActivity {
         setContentView(R.layout.update_diary);
 
         diary = (Diary) getIntent().getSerializableExtra("diary");
-        upTitle = findViewById(R.id.update_title);
-        upWeather = findViewById(R.id.update_weather);
-        upFeeling = findViewById(R.id.update_feeling);
-        upDetail = findViewById(R.id.update_detail);
+        upTitle = (EditText) findViewById(R.id.update_title);
+        upWeather = (RadioGroup) findViewById(R.id.update_weather);
+        upFeeling = (RadioGroup) findViewById(R.id.update_feeling);
+        upDetail = (EditText) findViewById(R.id.update_detail);
+        icon = (ImageView) findViewById(R.id.up_icon);
 
         upTitle.setText(diary.getTitle());
         upDetail.setText(diary.getDetail());
@@ -54,10 +57,13 @@ public class UpdateDiary extends AppCompatActivity {
 
         if(diary.getFeeling().equals("좋음")) {
             upFeeling.check(f1.getId());
+            icon.setImageResource(R.mipmap.smile);
         } else if(diary.getFeeling().equals("슬픔")) {
             upFeeling.check(f2.getId());
+            icon.setImageResource(R.mipmap.sad);
         } else if(diary.getFeeling().equals("화남")){
             upFeeling.check(f3.getId());
+            icon.setImageResource(R.mipmap.angry);
         }
 
 
@@ -88,14 +94,17 @@ public class UpdateDiary extends AppCompatActivity {
                 switch (i) {
                     case R.id.upFine:
                         uf = "좋음";
+                        icon.setImageResource(R.mipmap.smile);
                         break;
 
                     case R.id.upSad:
                         uf = "슬픔";
+                        icon.setImageResource(R.mipmap.sad);
                         break;
 
                     case R.id.upAngry:
                         uf = "화남";
+                        icon.setImageResource(R.mipmap.angry);
                         break;
                 }
             }
