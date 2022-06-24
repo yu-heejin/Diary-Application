@@ -27,7 +27,7 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
     DateTimeFormatter formatter;
 
     public DiaryDBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, 3);
+        super(context, DB_NAME, null, 1);
     }
 
     @Override

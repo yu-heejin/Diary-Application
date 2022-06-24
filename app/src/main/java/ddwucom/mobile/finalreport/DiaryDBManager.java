@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class DiaryDBManager {
     DiaryDBHelper diaryDBHelper = null;
-    Cursor cursor = null;
+    //Cursor cursor = null;
 
     LocalDate localDate;
     DateTimeFormatter formatter;
@@ -135,22 +135,23 @@ public class DiaryDBManager {
         ArrayList<Diary> diaryArrayList = new ArrayList<>();
         SQLiteDatabase db = diaryDBHelper.getReadableDatabase();
 
-        String whereClause = diaryDBHelper.COL_TITLE + "=?";
-        String[] whereArgs = new String[] { title };
+        String sql = "SELECT * FROM " + diaryDBHelper.TABLE_NAME +
+                " WHERE title LIKE '%" + title + "%'";
 
-        Cursor cursor = db.query(diaryDBHelper.TABLE_NAME, null, whereClause, whereArgs, null, null, null, null);
+        Cursor cursor = db.rawQuery(sql, null);
 
-        while(cursor.moveToNext()) {
-            long id = cursor.getInt(0);
-            String title2 = cursor.getString(1);
-            String feeling = cursor.getString(2);
-            String weather = cursor.getString(3);
-            String date = cursor.getString(4);
-            String detail = cursor.getString(5);
-            int picture = cursor.getInt(6);
+        while (cursor.moveToNext()) {
+            long id = cursor.getInt(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_ID));
+            String title2 = cursor.getString(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_TITLE));
+            String feeling = cursor.getString(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_FEELING));
+            String weather = cursor.getString(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_WEATHER));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_DATE));
+            String detail = cursor.getString(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_DETAIL));
+            int picture = cursor.getInt(cursor.getColumnIndexOrThrow(diaryDBHelper.COL_PIC));
 
             diaryArrayList.add(new Diary(id, title2, feeling, weather, date, detail, picture));
         }
+
         cursor.close();
         diaryDBHelper.close();
         return diaryArrayList;

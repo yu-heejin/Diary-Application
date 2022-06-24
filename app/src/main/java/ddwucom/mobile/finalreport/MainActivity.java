@@ -146,12 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     diaryAdapter.notifyDataSetChanged();
                 } else {
                     diaryArrayList.clear();
-                    ArrayList<Diary> tmp = diaryDBManager.getAllDiary();
-                    for(int i=0; i<tmp.size(); i++) {
-                        if(tmp.get(i).getTitle().contains(s)) {
-                            diaryArrayList.add(tmp.get(i));
-                        }
-                    }
+                    diaryArrayList.addAll(diaryDBManager.getDiaryByTitle(s));
                     diaryAdapter.notifyDataSetChanged();
                 }
 
