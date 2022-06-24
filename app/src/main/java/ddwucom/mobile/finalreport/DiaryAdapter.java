@@ -57,7 +57,7 @@ public class DiaryAdapter extends BaseAdapter {
             viewHolder.weather = (TextView) view.findViewById(R.id.weather);
             viewHolder.feeling = (TextView) view.findViewById(R.id.feeling);
             viewHolder.feelingIcon = (ImageView) view.findViewById(R.id.feeling_icon);
-            viewHolder.detail = (TextView) view.findViewById(R.id.detail);
+            //viewHolder.detail = (TextView) view.findViewById(R.id.detail);
 
             view.setTag(viewHolder);
         } else {
@@ -70,7 +70,7 @@ public class DiaryAdapter extends BaseAdapter {
         viewHolder.feeling.setText(diaryArrayList.get(position).getFeeling());
         viewHolder.feelingIcon.setImageResource(diaryArrayList.get(position).getPicture());
         viewHolder.date.setText(diaryArrayList.get(position).getDate());
-        viewHolder.detail.setText(diaryArrayList.get(position).getDetail());
+        //viewHolder.detail.setText(diaryArrayList.get(position).getDetail());
 
         return view;
     }
@@ -83,6 +83,6 @@ public class DiaryAdapter extends BaseAdapter {
         TextView weather;
         TextView feeling;
         ImageView feelingIcon;
-        TextView detail;
+        //TextView detail;
     }
 }
