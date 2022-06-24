@@ -82,22 +82,48 @@ public class AddDiary extends AppCompatActivity {
             case R.id.button_ok:
                 String t = title.getText().toString();
                 String d = detail.getText().toString();
+                boolean check[] = {true, true, true, true};
+                String missing[] = {"제목", "내용", "날씨", "기분"};
+                String msg = "";
 
-                boolean result = diaryDBManager.addNewDiary(
-                        new Diary(t, f, w, d)
-                );
-
-                if(result) {
-                    setResult(RESULT_OK);
+                if(t.equals("") || t == null) {
+                    check[0] = false;
                 }
-                break;
+                if(d.equals("") || d == null) {
+                    check[1] = false;
+                }
+                if(w == null) {
+                    check[2] = false;
+                }
+                if(f == null) {
+                    check[3] = false;
+                }
 
+                for(int i=0; i<check.length; i++) {
+                    if(!check[i]) {
+                         msg += missing[i] + " ";
+                    }
+                }
+
+                if(msg.equals("")) {
+                    boolean result = diaryDBManager.addNewDiary(
+                            new Diary(t, f, w, d)
+                    );
+
+                    if (result) {
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+                } else {
+                    Toast.makeText(this, msg + "을(를) 입력해주세요!", Toast.LENGTH_SHORT).show();
+                }
+
+                break;
 
             case R.id.button_cancel:
                 setResult(RESULT_CANCELED);
+                finish();
                 break;
         }
-
-        finish();
     }
 }

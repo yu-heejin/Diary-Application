@@ -20,8 +20,6 @@ public class UpdateDiary extends AppCompatActivity {
     RadioButton f1, f2, f3;
 
     String uw, uf;
-    String w, f;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +109,24 @@ public class UpdateDiary extends AppCompatActivity {
 
                 diary.setTitle(title);
                 diary.setDetail(detail);
-                diary.setWeather(uw);
-                diary.setFeeling(uf);
+
+                if(uw == null) {
+                    diary.setWeather(diary.getWeather());
+                } else {
+                    diary.setWeather(uw);
+                }
+
+                if(uf == null) {
+                    diary.setFeeling(diary.getFeeling());
+                } else {
+                    diary.setFeeling(uf);
+                }
+                System.out.println(uw);
+                System.out.println(uf);
+                System.out.println(diary.getFeeling());
+                System.out.println(diary.getWeather());
+//                diary.setWeather(uw);
+//                diary.setFeeling(uf);
 
                 boolean result = diaryDBManager.modifyDiary(diary);
 
