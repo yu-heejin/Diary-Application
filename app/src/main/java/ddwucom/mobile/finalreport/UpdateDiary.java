@@ -49,19 +49,17 @@ public class UpdateDiary extends AppCompatActivity {
             upWeather.check(w1.getId());
         } else if(diary.getWeather().equals("흐림")) {
             upWeather.check(w2.getId());
-        } else {
+        } else if(diary.getWeather().equals("비")){
             upWeather.check(w3.getId());
         }
 
         if(diary.getFeeling().equals("좋음")) {
             upFeeling.check(f1.getId());
-        } else if(diary.getWeather().equals("슬픔")) {
+        } else if(diary.getFeeling().equals("슬픔")) {
             upFeeling.check(f2.getId());
-        } else {
+        } else if(diary.getFeeling().equals("화남")){
             upFeeling.check(f3.getId());
         }
-
-
 
 
         diaryDBManager = new DiaryDBManager(this);
