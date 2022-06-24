@@ -1,5 +1,6 @@
 package ddwucom.mobile.finalreport;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -115,7 +116,8 @@ public class AddDiary extends AppCompatActivity {
                     );
 
                     if (result) {
-                        setResult(RESULT_OK);
+                        Intent intent = new Intent();
+                        setResult(RESULT_OK, intent);
                         finish();
                     }
                 } else {
@@ -125,7 +127,8 @@ public class AddDiary extends AppCompatActivity {
                 break;
 
             case R.id.button_cancel:
-                setResult(RESULT_CANCELED);
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED, intent);
                 finish();
                 break;
         }

@@ -152,9 +152,11 @@ public class UpdateDiary extends AppCompatActivity {
                     boolean result = diaryDBManager.modifyDiary(diary);
 
                     if(result) {
-                        setResult(RESULT_OK);
+                        Intent intent = new Intent();
+                        setResult(RESULT_OK, intent);
                     } else {
-                        setResult(RESULT_CANCELED);
+                        Intent intent = new Intent();
+                        setResult(RESULT_CANCELED, intent);
                     }
                     finish();
                 } else {
@@ -164,7 +166,8 @@ public class UpdateDiary extends AppCompatActivity {
                 break;
 
             case R.id.button_cancel2:
-                setResult(RESULT_CANCELED);
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED, intent);
                 finish();
                 break;
         }
