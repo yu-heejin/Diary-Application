@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,6 +107,9 @@ public class UpdateDiary extends AppCompatActivity {
             case R.id.button_update:
                 String title = upTitle.getText().toString();
                 String detail = upDetail.getText().toString();
+                boolean check[] = {true, true};
+                String missing[] = {"제목", "내용"};
+                String msg = "";
 
                 diary.setTitle(title);
                 diary.setDetail(detail);
@@ -121,28 +125,41 @@ public class UpdateDiary extends AppCompatActivity {
                 } else {
                     diary.setFeeling(uf);
                 }
-                System.out.println(uw);
-                System.out.println(uf);
-                System.out.println(diary.getFeeling());
-                System.out.println(diary.getWeather());
-//                diary.setWeather(uw);
-//                diary.setFeeling(uf);
 
-                boolean result = diaryDBManager.modifyDiary(diary);
+                if(title.equals("") || title == null) {
+                    check[0] = false;
+                }
+                if(detail.equals("") || detail == null) {
+                    check[1] = false;
+                }
 
-                if(result) {
-                    setResult(RESULT_OK);
+                for(int i=0; i<check.length; i++) {
+                    if(!check[i]) {
+                        msg += missing[i] + " ";
+                    }
+                }
+
+                if(msg.equals("")) {
+                    boolean result = diaryDBManager.modifyDiary(diary);
+
+                    if(result) {
+                        setResult(RESULT_OK);
+                    } else {
+                        setResult(RESULT_CANCELED);
+                    }
+                    finish();
                 } else {
-                    setResult(RESULT_CANCELED);
+                    Toast.makeText(this, msg + "을(를) 입력해주세요!", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
 
             case R.id.button_cancel2:
                 setResult(RESULT_CANCELED);
+                finish();
                 break;
         }
 
-        finish();
+
     }
 }
